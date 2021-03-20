@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>KeypadConfig.ui.qml</file>
+        <file>CreativeKeypadAssembly2.png</file>
+        <file>main.qml</file>
+    </qresource>
+</RCC>
