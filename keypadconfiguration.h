@@ -1,13 +1,21 @@
 #ifndef KEYPADCONFIGURATION_H
 #define KEYPADCONFIGURATION_H
 #include <shortcutkey.h>
-
+#include <QJsonObject>
+#include <QDataStream>
 /**
  * @brief Datastructure for storing a custom configuration of the device
  */
-class KeypadConfiguration
+class KeypadConfiguration : public QObject
 {
+
+    friend QDataStream operator<<(QDataStream &out, const KeypadConfiguration &config);
+    friend QDataStream operator>>(QDataStream &in, KeypadConfiguration &config);
 public:
+    enum DIRECTION {
+        LEFT,
+        RIGHT
+    };
     KeypadConfiguration();
     /**
      * @brief Set a specific keypad key to a shortcut
@@ -20,7 +28,7 @@ public:
      * @param id ID of the encoder from top left to bottom right
      * @param key_config Pointer to the configuration to use
      */
-    void setEncoderValue(int id, ShortcutKey * key_config);
+    void setEncoderValue(int id, ShortcutKey * key_config, DIRECTION dir);
 
     /**
      * @brief Serialize all the data of the instance to a file

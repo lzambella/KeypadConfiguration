@@ -10,9 +10,12 @@
 #define SHORTCUTKEY_H
 #include <QObject>
 #include <qt_windows.h>
-
+#include <QDataStream>
 class ShortcutKey
 {
+    Q_OBJECT
+    friend QDataStream &operator<< (QDataStream &, const ShortcutKey &);
+    friend QDataStream &operator>> (QDataStream &, ShortcutKey &);
 public:
     enum MODIFIERS {
         CTRL,
@@ -28,24 +31,27 @@ public:
      * @param mod any modifiers the key should use
      */
     ShortcutKey(char key, MODIFIERS mod);
-
-private:
+    QString getPhysKey() {return this->physical_key; }
+    qint64 getVirtKey() { return this->virtual_key; }
+    qint64 getVirtMod() { return this->virtual_modifier;}
+    MODIFIERS getMod() { return this->mod; }
     /**
      * @brief What physical key this instance represents
      * See the table for a list of keys
      */
-    unsigned char * physical_key;
+    QString physical_key;
     /**
      * @brief virtual keycode the key maps to.
      * Usable by windows
      */
-    DWORD virtual_key;
+    qint64 virtual_key;
     /**
      * @brief Virtual keycode modifier, if applicable, the key maps to.
-     * Usable by windows
+     * Usable by windows.
+     * This value can be null
      */
-    DWORD virtual_modifier;
-
+    qint64 virtual_modifier;
+    MODIFIERS mod;
 };
 
 #endif // SHORTCUTKEY_H

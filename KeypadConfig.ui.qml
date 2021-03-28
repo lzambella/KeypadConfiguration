@@ -7,10 +7,23 @@ Rectangle {
     width: 1024
     height: 768
     visible: true
-
+    property alias configKeyDialog: configKeyDialog
+    property alias encFRight: encFRight
+    property alias encFLeft: encFLeft
+    property alias encERight: encERight
+    property alias encELeft: encELeft
+    property alias encDRight: encDRight
+    property alias encDLeft: encDLeft
+    property alias encCRight: encCRight
+    property alias encCLeft: encCLeft
+    property alias encBRight: encBRight
+    property alias encBLeft: encBLeft
+    property alias encARight: encARight
+    property alias encALeft: encALeft
 
     Rectangle {
         id: configKeyDialog
+        objectName: "configDialog"
         x: 0
         y: 0
         width: 1024
@@ -20,6 +33,7 @@ Rectangle {
 
         CheckBox {
             id: ctrlCheckBox
+            objectName: "ctrlCheckbox"
             x: 71
             y: -285
             visible: false
@@ -340,7 +354,6 @@ Rectangle {
         }
     }
 
-
     states: [
         State {
             name: "EditKey"
@@ -358,6 +371,7 @@ Rectangle {
                 y: 237
                 visible: true
                 text: qsTr("CTRL")
+                checked: false
                 font.pointSize: 35
             }
 
@@ -442,3 +456,4 @@ Designer {
     D{i:0;formeditorZoom:0.5}
 }
 ##^##*/
+
