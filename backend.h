@@ -33,7 +33,7 @@ public:
      * takes the info given in state 2 and writes to the config
      * instance. also writes the config to a file. Return to state 1 as well.
      */
-    void saveConfig(int id, ShortcutKey::MODIFIERS mod, char keystroke);
+    Q_INVOKABLE void writeConfig(int id, int mod, char keystroke);
     void loadWindowComponents();
 private:
     /**

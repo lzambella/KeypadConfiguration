@@ -4,11 +4,14 @@ import QtQuick.Controls 2.15
 
 Window {
     id: main
+    minimumHeight: 768
+    minimumWidth: 1024
     width: 1024
     height: 768
     title: qsTr("Creative Keypad Config");
     objectName: "mainWindow"
     visible: true
+
     signal buttonClickedSignal(int id);
     KeypadConfig {
         objectName: "keypadWindow"
@@ -56,6 +59,9 @@ Window {
         encALeft.onClicked: {
             Backend.getConfig(0);
 
+        }
+        confirmButton.onClicked: {
+            Backend.writeConfig(0, 0, textInput.text);
         }
 
     }

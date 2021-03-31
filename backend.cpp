@@ -3,7 +3,7 @@
 Backend::Backend(QQmlApplicationEngine * eng)
 {
     // Get the QML
-    Backend::engine = eng;
+    this->engine = eng;
     qDebug() << "Engine used:" << engine->baseUrl();
 
 }
@@ -19,24 +19,83 @@ void Backend::loadWindowComponents() {
         qDebug() << " Found the configuration window";
 }
 void Backend::getConfig(int id) {
-    qDebug() << "Button pressed.";
-    // Fill the view with the data from the config
+    qDebug() << "Loading configuration...";
 }
 
-void Backend::saveConfig(int id, ShortcutKey::MODIFIERS mod, char keystroke) {
+void Backend::writeConfig(int id, int mod, char keystroke) {
     qDebug() << "Saving the config";
+    qDebug() << "Setting ID " << id << " to " << keystroke;
     // Get the status of the current button and change accordingly
-    ShortcutKey shortcut(keystroke, mod);
+    ShortcutKey shortcut('k', (ShortcutKey::MODIFIERS) 2);
     switch (id) {
     // A Left
     case 0:
-        Backend::config.setEncoderValue(0, &shortcut, KeypadConfiguration::LEFT);
+        this->config.setEncoderValue(0, &shortcut, KeypadConfiguration::LEFT);
         break;
+    // A Right
     case 1:
-        Backend::config.setEncoderValue(0, &shortcut, KeypadConfiguration::RIGHT);
+        this->config.setEncoderValue(0, &shortcut, KeypadConfiguration::RIGHT);
+    // B Left
+    case 2:
+        this->config.setEncoderValue(1, &shortcut, KeypadConfiguration::LEFT);
+        break;
+    case 3:
+        this->config.setEncoderValue(1, &shortcut, KeypadConfiguration::RIGHT);
+        break;
+    case 4:
+        this->config.setEncoderValue(2, &shortcut, KeypadConfiguration::LEFT);
+        break;
+    case 5:
+        this->config.setEncoderValue(2, &shortcut, KeypadConfiguration::RIGHT);
+        break;
+    case 6:
+        this->config.setEncoderValue(3, &shortcut, KeypadConfiguration::LEFT);
+        break;
+    case 7:
+        this->config.setEncoderValue(3, &shortcut, KeypadConfiguration::RIGHT);
+        break;
+    case 8:
+        this->config.setEncoderValue(4, &shortcut, KeypadConfiguration::LEFT);
+        break;
+    case 9:
+        this->config.setEncoderValue(4, &shortcut, KeypadConfiguration::RIGHT);
+        break;
+    case 10:
+        this->config.setEncoderValue(5, &shortcut, KeypadConfiguration::LEFT);
+        break;
+    case 11:
+        this->config.setEncoderValue(5, &shortcut, KeypadConfiguration::RIGHT);
+        break;
+    case 12:
+        this->config.setEncoderValue(6, &shortcut, KeypadConfiguration::LEFT);
+        break;
+    case 13:
+        this->config.setEncoderValue(6, &shortcut, KeypadConfiguration::RIGHT);
+        break;
     default:
         break;
     }
+    // Now for the numpad fi applicable
+    // This is tedious
+    for (int i = 14; i < 26; i++) {
+        if (id < 14)
+            break;
+        if (id == i) {
+            this->config.setKeypadValue(i, &shortcut);
+            break;
+        }
+    }
 
-    Backend::config.serializeConfiguration();
+    // Use QDatastream streams
+    qDebug() << "serializing the configuration";
+    // Fill the view with the data from the config
+    QFile file("../config.dat");
+    if (!file.open(QIODevice::WriteOnly))
+            qDebug() << "Could not open file";
+    else {
+        QDataStream stream(&file);
+        stream << this->config;
+        file.close();
+        qDebug() << "File written";
+    }
 }

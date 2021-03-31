@@ -7,6 +7,11 @@ Rectangle {
     width: 1024
     height: 768
     visible: true
+    property alias ctrlCheckBox: ctrlCheckBox
+    property alias altCheckBox: altCheckBox
+    property alias shiftCheckBox: shiftCheckBox
+    property alias textInput: textInput
+    property alias confirmButton: confirmButton
     property alias configKeyDialog: configKeyDialog
     property alias encFRight: encFRight
     property alias encFLeft: encFLeft
@@ -116,6 +121,11 @@ Rectangle {
             height: 59
             text: qsTr("1")
             font.pointSize: 30
+
+            Connections {
+                target: button
+                onClicked: rectangle.state = "EditKey"
+            }
         }
 
         Button {
@@ -126,6 +136,11 @@ Rectangle {
             height: 59
             text: qsTr("2")
             font.pointSize: 30
+
+            Connections {
+                target: button1
+                onClicked: rectangle.state = "EditKey"
+            }
         }
 
         Button {
@@ -136,6 +151,11 @@ Rectangle {
             height: 59
             text: qsTr("3")
             font.pointSize: 30
+
+            Connections {
+                target: button2
+                onClicked: rectangle.state = "EditKey"
+            }
         }
 
         Button {
@@ -146,6 +166,11 @@ Rectangle {
             height: 59
             text: qsTr("4")
             font.pointSize: 30
+
+            Connections {
+                target: button3
+                onClicked: rectangle.state = "EditKey"
+            }
         }
 
         Button {
@@ -156,6 +181,11 @@ Rectangle {
             height: 59
             text: qsTr("5")
             font.pointSize: 30
+
+            Connections {
+                target: button4
+                onClicked: rectangle.state = "EditKey"
+            }
         }
 
         Button {
@@ -166,6 +196,11 @@ Rectangle {
             height: 59
             text: qsTr("6")
             font.pointSize: 30
+
+            Connections {
+                target: button5
+                onClicked: rectangle.state = "EditKey"
+            }
         }
 
         Button {
@@ -176,6 +211,11 @@ Rectangle {
             height: 59
             text: qsTr("7")
             font.pointSize: 30
+
+            Connections {
+                target: button6
+                onClicked: rectangle.state = "EditKey"
+            }
         }
 
         Button {
@@ -186,6 +226,11 @@ Rectangle {
             height: 59
             text: qsTr("8")
             font.pointSize: 30
+
+            Connections {
+                target: button7
+                onClicked: rectangle.state = "EditKey"
+            }
         }
 
         Button {
@@ -196,6 +241,11 @@ Rectangle {
             height: 59
             text: qsTr("9")
             font.pointSize: 30
+
+            Connections {
+                target: button8
+                onClicked: rectangle.state = "EditKey"
+            }
         }
 
         Button {
@@ -206,6 +256,11 @@ Rectangle {
             height: 59
             text: qsTr("10")
             font.pointSize: 30
+
+            Connections {
+                target: button9
+                onClicked: rectangle.state = "EditKey"
+            }
         }
 
         Button {
@@ -216,6 +271,11 @@ Rectangle {
             height: 59
             text: qsTr("11")
             font.pointSize: 30
+
+            Connections {
+                target: button10
+                onClicked: rectangle.state = "EditKey"
+            }
         }
 
         Button {
@@ -226,6 +286,11 @@ Rectangle {
             height: 59
             text: qsTr("12")
             font.pointSize: 30
+
+            Connections {
+                target: button11
+                onClicked: rectangle.state = "EditKey"
+            }
         }
 
         Button {
@@ -236,6 +301,11 @@ Rectangle {
             height: 59
             text: qsTr("<")
             font.pointSize: 30
+
+            Connections {
+                target: encALeft
+                onClicked: rectangle.state = "EditKey"
+            }
         }
 
         Button {
@@ -261,6 +331,11 @@ Rectangle {
             height: 59
             text: qsTr("<")
             font.pointSize: 30
+
+            Connections {
+                target: encBLeft
+                onClicked: rectangle.state = "EditKey"
+            }
         }
 
         Button {
@@ -271,6 +346,11 @@ Rectangle {
             height: 59
             text: qsTr(">")
             font.pointSize: 30
+
+            Connections {
+                target: encBRight
+                onClicked: rectangle.state = "EditKey"
+            }
         }
 
         Button {
@@ -281,6 +361,11 @@ Rectangle {
             height: 59
             text: qsTr("<")
             font.pointSize: 30
+
+            Connections {
+                target: encCLeft
+                onClicked: rectangle.state = "EditKey"
+            }
         }
 
         Button {
@@ -291,6 +376,11 @@ Rectangle {
             height: 59
             text: qsTr(">")
             font.pointSize: 30
+
+            Connections {
+                target: encCRight
+                onClicked: rectangle.state = "EditKey"
+            }
         }
 
         Button {
@@ -301,6 +391,11 @@ Rectangle {
             height: 59
             text: qsTr("<")
             font.pointSize: 30
+
+            Connections {
+                target: encDLeft
+                onClicked: rectangle.state = "EditKey"
+            }
         }
 
         Button {
@@ -311,6 +406,11 @@ Rectangle {
             height: 59
             text: qsTr(">")
             font.pointSize: 30
+
+            Connections {
+                target: encDRight
+                onClicked: rectangle.state = "EditKey"
+            }
         }
 
         Button {
@@ -321,6 +421,11 @@ Rectangle {
             height: 59
             text: qsTr("<")
             font.pointSize: 30
+
+            Connections {
+                target: encELeft
+                onClicked: rectangle.state = "EditKey"
+            }
         }
 
         Button {
@@ -331,6 +436,11 @@ Rectangle {
             height: 59
             text: qsTr(">")
             font.pointSize: 30
+
+            Connections {
+                target: encERight
+                onClicked: rectangle.state = "EditKey"
+            }
         }
 
         Button {
@@ -341,6 +451,11 @@ Rectangle {
             height: 59
             text: qsTr("<")
             font.pointSize: 30
+
+            Connections {
+                target: encFLeft
+                onClicked: rectangle.state = "EditKey"
+            }
         }
 
         Button {
@@ -351,6 +466,11 @@ Rectangle {
             height: 59
             text: qsTr(">")
             font.pointSize: 30
+
+            Connections {
+                target: encFRight
+                onClicked: rectangle.state = "EditKey"
+            }
         }
     }
 
@@ -447,13 +567,14 @@ Rectangle {
         x: 270
         y: 38
         text: qsTr("Keypad Config Beta")
+        font.family: "Tahoma"
         font.pointSize: 42
     }
 }
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.5}
+    D{i:0;formeditorZoom:0.75}
 }
 ##^##*/
 

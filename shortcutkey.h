@@ -9,13 +9,11 @@
 #ifndef SHORTCUTKEY_H
 #define SHORTCUTKEY_H
 #include <QObject>
-#include <qt_windows.h>
+#include <windows.h>
+#include <WinUser.h>
 #include <QDataStream>
-class ShortcutKey
+class ShortcutKey : public QObject
 {
-    Q_OBJECT
-    friend QDataStream &operator<< (QDataStream &, const ShortcutKey &);
-    friend QDataStream &operator>> (QDataStream &, ShortcutKey &);
 public:
     enum MODIFIERS {
         CTRL,
@@ -30,7 +28,7 @@ public:
      * @param key The key the button maps to
      * @param mod any modifiers the key should use
      */
-    ShortcutKey(char key, MODIFIERS mod);
+    ShortcutKey(QString key, MODIFIERS mod);
     QString getPhysKey() {return this->physical_key; }
     qint64 getVirtKey() { return this->virtual_key; }
     qint64 getVirtMod() { return this->virtual_modifier;}
@@ -53,5 +51,6 @@ public:
     qint64 virtual_modifier;
     MODIFIERS mod;
 };
-
+QDataStream &operator<< (QDataStream &, const ShortcutKey &);
+QDataStream &operator>> (QDataStream &, ShortcutKey &);
 #endif // SHORTCUTKEY_H

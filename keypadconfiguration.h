@@ -1,16 +1,17 @@
 #ifndef KEYPADCONFIGURATION_H
 #define KEYPADCONFIGURATION_H
-#include <shortcutkey.h>
+#include "shortcutkey.h"
+#include <WinUser.h>
 #include <QJsonObject>
 #include <QDataStream>
+#include <QObject>
+#include <QFile>
 /**
  * @brief Datastructure for storing a custom configuration of the device
  */
 class KeypadConfiguration : public QObject
 {
 
-    friend QDataStream operator<<(QDataStream &out, const KeypadConfiguration &config);
-    friend QDataStream operator>>(QDataStream &in, KeypadConfiguration &config);
 public:
     enum DIRECTION {
         LEFT,
@@ -35,7 +36,6 @@ public:
      * for use with the service program
      */
     void serializeConfiguration();
-private:
     /**
      * @brief Number pad configuration where num_i represents the ith key
      * from left to right, top to bottom
@@ -59,4 +59,6 @@ private:
     ShortcutKey * id2enc(int id);
 };
 
+QDataStream &operator<<(QDataStream &, const KeypadConfiguration &);
+QDataStream &operator>>(QDataStream &, KeypadConfiguration &);
 #endif // KEYPADCONFIGURATION_H
