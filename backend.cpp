@@ -22,11 +22,11 @@ void Backend::getConfig(int id) {
     qDebug() << "Loading configuration...";
 }
 
-void Backend::writeConfig(int id, int mod, char keystroke) {
+void Backend::writeConfig(int id, int mod, QString keystroke) {
     qDebug() << "Saving the config";
     qDebug() << "Setting ID " << id << " to " << keystroke;
     // Get the status of the current button and change accordingly
-    ShortcutKey shortcut('k', (ShortcutKey::MODIFIERS) 2);
+    ShortcutKey shortcut(keystroke, (ShortcutKey::MODIFIERS) 2);
     switch (id) {
     // A Left
     case 0:

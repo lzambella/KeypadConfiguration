@@ -7,10 +7,10 @@ Rectangle {
     width: 1024
     height: 768
     visible: true
+    property alias textInput: textInput
     property alias ctrlCheckBox: ctrlCheckBox
     property alias altCheckBox: altCheckBox
     property alias shiftCheckBox: shiftCheckBox
-    property alias textInput: textInput
     property alias confirmButton: confirmButton
     property alias configKeyDialog: configKeyDialog
     property alias encFRight: encFRight
@@ -70,17 +70,6 @@ Rectangle {
             font.pixelSize: 12
         }
 
-        TextInput {
-            id: textInput
-            x: 323
-            y: -170
-            width: 80
-            height: 20
-            visible: false
-            text: qsTr("Text Input")
-            font.pixelSize: 12
-        }
-
         Text {
             id: text2
             x: 76
@@ -101,6 +90,16 @@ Rectangle {
                 target: confirmButton
                 onClicked: rectangle.state = "base state"
             }
+        }
+
+        TextEdit {
+            id: textInput
+            x: 391
+            y: 506
+            width: 80
+            height: 20
+            text: qsTr("Text Edit")
+            font.pixelSize: 12
         }
     }
 
@@ -525,17 +524,6 @@ Rectangle {
             }
 
             PropertyChanges {
-                target: textInput
-                x: 485
-                y: 352
-                width: 341
-                height: 60
-                visible: true
-                text: qsTr("[Input here]")
-                font.pixelSize: 50
-            }
-
-            PropertyChanges {
                 target: text2
                 x: 238
                 y: 352
@@ -559,6 +547,17 @@ Rectangle {
                 visible: true
                 text: qsTr("Confirm")
                 font.pointSize: 50
+            }
+
+            PropertyChanges {
+                target: textInput
+                x: 477
+                y: 354
+                width: 243
+                height: 61
+                text: qsTr("Input Key
+")
+                font.pixelSize: 50
             }
         }
     ]

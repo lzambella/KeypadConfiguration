@@ -33,7 +33,7 @@ public:
      * takes the info given in state 2 and writes to the config
      * instance. also writes the config to a file. Return to state 1 as well.
      */
-    Q_INVOKABLE void writeConfig(int id, int mod, char keystroke);
+    Q_INVOKABLE void writeConfig(int id, int mod, QString keystroke);
     void loadWindowComponents();
 private:
     /**
